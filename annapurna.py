@@ -2,7 +2,13 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 datalist=[]
-urls=['https://www.nepalhikingteam.com/package/annapurna-base-camp-trek/','https://www.nepalhikingteam.com/package/annapurna-base-camp-short-trek/']
+urls=['https://www.nepalhikingteam.com/package/annapurna-base-camp-trek/','https://www.nepalhikingteam.com/package/annapurna-base-camp-short-trek/',
+      'https://www.nepalhikingteam.com/package/instant-annapurna-base-camp-trek/','https://www.nepalhikingteam.com/package/annapurna-base-camp-heli-trek/',
+      'https://www.nepalhikingteam.com/package/mardi-himal-trek/','https://www.nepalhikingteam.com/package/mardi-himal-trekking/',
+      'https://www.nepalhikingteam.com/package/classic-annapurna-circuit-trek/','https://www.nepalhikingteam.com/package/annapurna-circuit-trek/',
+      'https://www.nepalhikingteam.com/package/annapurna-circuit-short-trek/','https://www.nepalhikingteam.com/package/annapurna-luxury-trek/',
+      'https://www.nepalhikingteam.com/package/annapurna-panorama-trek/','https://www.nepalhikingteam.com/package/annapurna-circuit-trek-tilicho-lake/',
+      'https://www.nepalhikingteam.com/package/short-annapurna-trek/']
 
 for url in urls:
 
@@ -32,4 +38,4 @@ for url in urls:
         }
         datalist.append(data)
 df=pd.DataFrame(datalist)
-df.to_csv('arnapurnaData.csv',index=True)
+df.to_csv('annapurnaData.csv',index=True)
