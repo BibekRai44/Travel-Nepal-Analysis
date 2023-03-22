@@ -27,6 +27,7 @@ for url in urls:
         altitude=post_div.find('ul',{"class":'facts-list'}).find_all('li')[1].find("dd").text.strip()
         accomodation=post_div.find('ul',{"class":'facts-list'}).find_all('li')[4].find("dd").text.strip()
         best_travel_time=post_div.find('ul',{"class":'facts-list'}).find_all('li')[5].find("dd").text.strip()
+        contact_or_book_your_trip='https://www.nepalhikingteam.com'
         data={
             'Trek':Trek,
             'Cost':cost,
@@ -34,7 +35,8 @@ for url in urls:
             'Trip Grade':trip_grade,
             'Max Altitude':altitude,
             'Accomodation':accomodation,
-            'Best Travel Time':best_travel_time
+            'Best Travel Time':best_travel_time,
+            'Contact or Book your Trip':contact_or_book_your_trip
         }
         datalist.append(data)
 df=pd.DataFrame(datalist)
