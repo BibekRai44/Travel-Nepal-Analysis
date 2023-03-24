@@ -2,8 +2,13 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 datalist=[]
-urls=['https://www.adventurehimalayacircuit.com/everest-base-camp-trek.html']
-   
+urls=['https://www.adventurehimalayacircuit.com/everest-base-camp-trek.html','https://www.adventurehimalayacircuit.com/everest-kalapathar-trekking.html',
+      'https://www.adventurehimalayacircuit.com/everest-panorama-trek.html','https://www.adventurehimalayacircuit.com/everest-base-camp-trek-via-gokyo-lake.html',
+      'https://www.adventurehimalayacircuit.com/gokyo-lake-trek.html','https://www.adventurehimalayacircuit.com/everest-base-camp-heli-trek.html',
+      'https://www.adventurehimalayacircuit.com/annapurna-circuit-trek.html','https://www.adventurehimalayacircuit.com/annapurna-base-camp-trek.html',
+      'https://www.adventurehimalayacircuit.com/ghorepani-poon-hill-trek.html','https://www.adventurehimalayacircuit.com/upper-mustang-trek.html',
+      'https://www.adventurehimalayacircuit.com/mardi-himal-trek.html','https://www.adventurehimalayacircuit.com/langtang-valley-trekking.html',
+      'https://www.adventurehimalayacircuit.com/manaslu-circuit-trek.html']
 
 for url in urls:
 
@@ -18,17 +23,16 @@ for url in urls:
     head=Trek.decompose()
     trek=soup.find('h1',{"itemprop":'name'}).text.strip()
     time=soup.find('div',{"class":'trip-info'}).find_all('div',{"class":'col-md-6 trip-info_text'})[3].find_all('span')[1].text.strip()
-    #time=soup.find('h1',{"class":'tourmaster-single-header-title'}).find('span').text.strip()
-    #cost=soup.find('div',{"class":'price'}).find("p").text.strip()
-    #trip_grade=soup.find('span',{"class":'hg-tooltip-text'}).text.strip()
-    #altitude=soup.find('div',{"class":'col-sm-12 col-md-12 col-lg-12 col-xl-12 tab-overview'}).find_all('div',{"class":'txt-info'})[5].find('span').text.strip()
+    cost=soup.find('div',{"class":'trip-info'}).find_all('div',{"class":'col-md-6 trip-info_text'})[1].find_all('span')[1].text.strip()
+    trip_grade=soup.find('div',{"class":'trip-info'}).find_all('div',{"class":'col-md-6 trip-info_text'})[4].find_all('span')[1].text.strip()
+    altitude=soup.find('div',{"class":'trip-info'}).find_all('div',{"class":'col-md-6 trip-info_text'})[5].find_all('span')[1].text.strip()
     contact_or_book_your_trip='https://www.himalayanglacier.com'
     data={
         'Trek':trek,
-        #'Cost':cost,
+        'Cost':cost,
         'Time':time,
-        #'Trip Grade':trip_grade,
-        #"Max Altitude":altitude,
+        'Trip Grade':trip_grade,
+        "Max Altitude":altitude,
         'Contact or Book your Trip':contact_or_book_your_trip
         }
     datalist.append(data)
